@@ -21,7 +21,7 @@ import { MenuItemComponent } from './restaurant-detail/menu-item/menu-item.compo
 import { ReviewsComponent } from './reviews/reviews.component'
 import { ShoppingCartService } from './restaurant-detail/shopping-cart/shopping-cart.service'
 import { OrderComponent } from './order/order.component'
-import {FormsModule} from '@angular/forms'
+import {FormsModule, FormBuilder, ReactiveFormsModule} from '@angular/forms'
 import { InputComponent } from 'app/shared/input/input.component'
 import { RadioComponent } from 'app/shared/radio/radio.component'
 import {OrderItemsComponent} from 'app/order/order-items/order-items.component'
@@ -29,8 +29,6 @@ import { OrderService } from './order/order.service'
 import { DeliveryCostsComponent } from '../app/order/delivery-costs/delivery-costs.component'
 import { OrderSummaryComponent } from './order-summary/order-summary.component'
 import { RatingComponent } from 'app/shared/rating/rating.component'
-
-
 
 @NgModule({
   declarations: [
@@ -51,15 +49,16 @@ import { RatingComponent } from 'app/shared/rating/rating.component'
     OrderItemsComponent,
     DeliveryCostsComponent,
     OrderSummaryComponent,
-    RatingComponent
+    RatingComponent, 
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    ReactiveFormsModule,
     FormsModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [RestaurantsService, ShoppingCartService,OrderService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [RestaurantsService,FormBuilder, ShoppingCartService,OrderService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
