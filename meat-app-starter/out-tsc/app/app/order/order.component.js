@@ -7,19 +7,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component } from '@angular/core';
-import { OrderService } from './order.service';
+import { Component } from "@angular/core";
+import { OrderService } from "./order.service";
+import { OrderItem } from "./order.model";
 var OrderComponent = (function () {
     function OrderComponent(orderService) {
         this.orderService = orderService;
         this.delivery = 8;
         this.paymentOptions = [
-            { label: 'Dinheiro', value: 'MON' },
-            { label: 'Cartão de Débito', value: 'DEB' },
-            { label: 'Cartão Refeição', value: 'REG' }
+            { label: "Dinheiro", value: "MON" },
+            { label: "Cartão de Débito", value: "DEB" },
+            { label: "Cartão Refeição", value: "REG" },
         ];
     }
-    OrderComponent.prototype.ngOnInit = function () {
+    OrderComponent.prototype.ngOnInit = function () { };
+    OrderComponent.prototype.checkOrder = function (order) {
+        var _this = this;
+        order.orderItems = this.cartItems().map(function (item) { return new OrderItem(item.quantity, item.menuItem.id); });
+        this.orderService.checkOrder(order).subscribe(function (orderId) {
+            console.log("Compra conclu\u00EDda: " + orderId);
+            _this.orderService.clear();
+        });
+        console.log(order);
     };
     OrderComponent.prototype.itemsValue = function () {
         return this.orderService.itemsValue();
@@ -40,8 +49,8 @@ var OrderComponent = (function () {
 }());
 OrderComponent = __decorate([
     Component({
-        selector: 'mt-order',
-        templateUrl: './order.component.html'
+        selector: "mt-order",
+        templateUrl: "./order.component.html",
     }),
     __metadata("design:paramtypes", [OrderService])
 ], OrderComponent);
