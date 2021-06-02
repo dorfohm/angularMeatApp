@@ -40,7 +40,8 @@ var OrderService = (function () {
         headers.append("Content-Type", "application/json");
         return this.http
             .post(MEAT_API + "/orders", JSON.stringify(order), new RequestOptions({ headers: headers }))
-            .map(function (response) { return response.json(); });
+            .map(function (response) { return response.json(); })
+            .map(function (order) { return order.id; });
     };
     return OrderService;
 }());

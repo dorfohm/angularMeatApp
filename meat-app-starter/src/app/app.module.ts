@@ -27,6 +27,7 @@ import { RadioComponent } from 'app/shared/radio/radio.component';
 import {OrderItemsComponent} from 'app/order/order-items/order-items.component';
 import { OrderService } from './order/order.service';
 import { DeliveryCostsComponent } from '../app/order/delivery-costs/delivery-costs.component';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
 
 
 
@@ -47,7 +48,8 @@ import { DeliveryCostsComponent } from '../app/order/delivery-costs/delivery-cos
     InputComponent,
     RadioComponent,
     OrderItemsComponent,
-    DeliveryCostsComponent
+    DeliveryCostsComponent,
+    OrderSummaryComponent
   ],
   imports: [
     BrowserModule,
