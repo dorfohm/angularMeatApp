@@ -6,6 +6,9 @@ import { Order, OrderItem } from "./order.model"
 import { Router } from '@angular/router'
 import {FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/forms'
 
+
+
+
 @Component({
   selector: "mt-order",
   templateUrl: "./order.component.html",
@@ -13,6 +16,8 @@ import {FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/form
 export class OrderComponent implements OnInit {
 
   orderForm: FormGroup
+
+  items: CartItem[]
 
   emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 
