@@ -5,6 +5,7 @@ import { RouterModule, PreloadAllModules } from '@angular/router'
 
 import {MEAT_API} from './app.api'
 import {ROUTES} from './app.routes'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 
 import { AppComponent } from './app.component'
@@ -39,6 +40,7 @@ import { SharedModule } from './shared/shared.module'
   imports: [
     BrowserModule,
     HttpModule,
+    BrowserAnimationsModule,
     SharedModule.forRoot(),
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
   ],
