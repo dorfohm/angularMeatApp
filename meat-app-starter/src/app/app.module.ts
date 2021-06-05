@@ -20,7 +20,6 @@ import { ReviewsComponent } from './reviews/reviews.component'
 import {FormBuilder} from '@angular/forms'
 import { OrderSummaryComponent } from './order-summary/order-summary.component'
 import { SharedModule } from './shared/shared.module'
-import {CoreModule} from './core/core.module'
 
 
 @NgModule({
@@ -40,8 +39,7 @@ import {CoreModule} from './core/core.module'
   imports: [
     BrowserModule,
     HttpModule,
-    CoreModule,
-    SharedModule,
+    SharedModule.forRoot(),
     RouterModule.forRoot(ROUTES)
   ],
   providers: [FormBuilder, {provide: LOCALE_ID, useValue: 'pt-BR'}],
