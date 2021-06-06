@@ -3,6 +3,8 @@ import { NgModule, LOCALE_ID } from '@angular/core'
 import { HttpModule } from '@angular/http'
 import { RouterModule, PreloadAllModules } from '@angular/router'
 
+import { LocationStrategy, HashLocationStrategy } from '@angular/common'
+
 import {MEAT_API} from './app.api'
 import {ROUTES} from './app.routes'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
@@ -20,7 +22,8 @@ import { MenuItemComponent } from './restaurant-detail/menu-item/menu-item.compo
 import { ReviewsComponent } from './reviews/reviews.component'
 import {FormBuilder} from '@angular/forms'
 import { OrderSummaryComponent } from './order-summary/order-summary.component'
-import { SharedModule } from './shared/shared.module'
+import { SharedModule } from './shared/shared.module';
+import { NotFoundComponent } from './not-found/not-found.component'
 
 
 @NgModule({
@@ -36,6 +39,7 @@ import { SharedModule } from './shared/shared.module'
     MenuItemComponent,
     ReviewsComponent,
     OrderSummaryComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,7 @@ import { SharedModule } from './shared/shared.module'
     SharedModule.forRoot(),
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
   ],
-  providers: [FormBuilder, {provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, {provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
